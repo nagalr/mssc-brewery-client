@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.net.URI;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
 class BreweryClientTest {
@@ -27,7 +27,10 @@ class BreweryClientTest {
     @Test
     void testSaveNewBeer() {
         //given
-        BeerDto beerDto = BeerDto.builder().beerName("New Beer").build();
+        BeerDto beerDto = BeerDto.builder()
+                .beerName("New Beer")
+                .id(UUID.randomUUID())
+                .build();
 
         URI uri = client.saveNewBeer(beerDto);
 
